@@ -1,23 +1,18 @@
-var mario = document.getElementById("mario");
-var gameArea = document.getElementById("game-area");
+let song1;
+let song2;
 
-document.onkeydown = function(e) {
-	switch (e.keyCode) {
-		case 37:
-			// Left arrow
-			mario.style.left = (mario.offsetLeft - 10) + "px";
-			break;
-		case 38:
-			// Up arrow
-			mario.style.bottom = (mario.offsetTop + 10) + "px";
-			break;
-		case 39:
-			// Right arrow
-			mario.style.left = (mario.offsetLeft + 10) + "px";
-			break;
-		case 40:
-			// Down arrow
-			mario.style.bottom = (mario.offsetTop - 10) + "px";
-			break;
-	}
-};
+function preload() {
+  song1 = loadSound("song1.mp3");
+  song2 = loadSound("song2.mp3");
+}
+
+function setup() {
+  let canvas = createCanvas(400, 400);
+  canvas.center();
+  let webcam = createCapture(VIDEO);
+  webcam.hide();
+}
+
+function draw() {
+  image(webcam, 0, 0, width, height);
+}
